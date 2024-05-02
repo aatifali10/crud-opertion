@@ -52,6 +52,23 @@ const UpdateUser = async (req, res) => {
       .json({ success: false, message: "Internal servere error", error });
   }
 };
+// delet user ap
+const DeleteUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const deletuser = await UserModel.findByIdAndDelete(userId);
+    if (!deletuser) {
+      return res
+        .status(404)
+        .json({ success: false, message: "user Not found" });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "user Deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
 
-
-export { Createuser, GetUser, UpdateUser };
+export { Createuser, GetUser, UpdateUser, DeleteUser };
