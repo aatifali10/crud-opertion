@@ -32,8 +32,8 @@ const GetUser = async (req, res) => {
 
 const UpdateUser = async (req, res) => {
   try {
-   const UserId = req.params.id;
-    const UpdatedUser = await UserModel.findByIdAndUpdate(UserId, req, body, {
+    const UserId = req.params.id;
+    const UpdatedUser = await UserModel.findByIdAndUpdate(UserId, req.body, {
       new: true,
     });
     if (!UpdatedUser) {
@@ -52,4 +52,6 @@ const UpdateUser = async (req, res) => {
       .json({ success: false, message: "Internal servere error", error });
   }
 };
+
+
 export { Createuser, GetUser, UpdateUser };

@@ -4,6 +4,6 @@ const routers = express.Router();
 
 routers.post("/create", Createuser);
 routers.get("/get", GetUser);
-routers.put("/update", UpdateUser);
+routers.put("/update/:id", UpdateUser);
 
 export default routers;
