@@ -14,10 +14,10 @@ const User = () => {
     getUser();
   }, []);
   return (
-    <div>
+    <div className="">
       <h1>Get user data from database</h1>
       {user.map((item) => (
-        <div key={item}>
+        <div key={item} className="bg-red-700">
           <h1>{item.name}</h1>
           <h1>{item.lastName}</h1>
           <h4>{item.email}</h4>
