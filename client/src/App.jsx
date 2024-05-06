@@ -1,11 +1,16 @@
-import Navbar from "./components/Navbar";
-import User from "./components/User";
+import { Route, Routes } from "react-router-dom";
+import GetUser from "./components/GetUser";
+import AddNewUser from "./components/AddNewUser";
+import UpdateUser from "./components/UpdateUser";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <User />
+      <Routes>
+        <Route path="/" element={<GetUser />} />
+        <Route path="/add" element={<AddNewUser />} />
+        <Route path="/update" element={<UpdateUser />} />
+      </Routes>
     </div>
   );
 };
