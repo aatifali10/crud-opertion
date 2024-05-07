@@ -10,7 +10,10 @@ const PORT = 5000;
 
 app.use("/api", routers);
 mongoose
-  .connect("mongodb://localhost:27017/crud")
+  .connect("mongodb://localhost:27017/crud", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((res) => console.log(`mongodb connected successfully`));
 
 app.listen(PORT, () => {

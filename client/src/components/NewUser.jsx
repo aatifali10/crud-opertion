@@ -1,13 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const UpdateUser = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    lastName:"",
-    email: "",
-    phone: "",
-  });
+const NewUser = () => {
+  const [formData, setFormData] = useState({});
+  const navigate=useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,11 +13,10 @@ const UpdateUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/create",
-        formData
-      );
-      console.log("Created:", response.config.data);
+      await axios
+        .post("http://localhost:5000/api/create", formData)
+        .then((res) => setFormData("Response:", res.data.NewUser));
+        navigate("/")
     } catch (error) {
       console.error("Error:", error);
     }
@@ -59,4 +55,4 @@ const UpdateUser = () => {
   );
 };
 
-export default UpdateUser;
+export default NewUser;

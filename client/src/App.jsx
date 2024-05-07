@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import GetUser from "./components/GetUser";
 import AddNewUser from "./components/AddNewUser";
-import UpdateUser from "./components/UpdateUser";
+import NewUser from "./components/NewUser";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<GetUser />} />
         <Route path="/add" element={<AddNewUser />} />
-        <Route path="/update" element={<UpdateUser />} />
+        <Route path="/create" element={<NewUser />} />
       </Routes>
     </div>
   );
