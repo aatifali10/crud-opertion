@@ -21,7 +21,7 @@ const GetUser = () => {
   };
   return (
     <>
-      <Link to="/update">
+      <Link to="/add">
         <button className="p-4 bg-blue-700 text-white m-4">Add New User</button>
       </Link>
       <div className="flex justify-around flex-wrap">
@@ -38,7 +38,7 @@ const GetUser = () => {
             >
               Delete
             </button>
-            <Link to="/create">
+            <Link to="/update">
               <button className="bg-blue-700 p-4 text-white m-2">Edit</button>
             </Link>
           </div>
