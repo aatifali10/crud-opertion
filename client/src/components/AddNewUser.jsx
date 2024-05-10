@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddNewUser = () => {
   const [formData, setFormData] = useState({});
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,14 +16,17 @@ const AddNewUser = () => {
       await axios
         .post("http://localhost:5000/api/create", formData)
         .then((res) => setFormData("Response:", res.data.NewUser));
-        navigate("/")
+      navigate("/");
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col w-[500px] bg-gray-600 mx-auto mt-[rem]"
+    >
       <input
         type="text"
         name="name"
@@ -50,7 +53,9 @@ const AddNewUser = () => {
         onChange={handleChange}
         placeholder="enter you'r phone"
       />
-      <button type="submit">Create</button>
+      <button type="submit" className="text-white text-[30px]">
+        Create
+      </button>
     </form>
   );
 };

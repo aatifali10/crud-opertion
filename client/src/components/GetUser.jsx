@@ -24,23 +24,28 @@ const GetUser = () => {
       <Link to="/add">
         <button className="p-4 bg-blue-700 text-white m-4">Add New User</button>
       </Link>
-      <div className="flex justify-around flex-wrap">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {user.map((items) => (
-          <div key={items} className="w-[20%]">
-            <h1>{items._id}</h1>
-            <h1>{items.name}</h1>
-            <h1>{items.lastName}</h1>
-            <h6>{items.email}</h6>
-            <h6>{items.phone}</h6>
-            <button
-              onClick={() => handleDelete(items._id)}
-              className="bg-blue-700 p-4 text-white m-2"
-            >
-              Delete
-            </button>
-            <Link to="/update">
-              <button className="bg-blue-700 p-4 text-white m-2">Edit</button>
-            </Link>
+          <div key={items} className="border rounded-md p-4 shadow-md">
+            <h1 className="text-lg font-bold">
+              {items.name} {items.lastName}
+            </h1>
+            <h6 className="text-gray-600">{items.email}</h6>
+            <h6 className="text-gray-600">{items.phone}</h6>
+
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => handleDelete(user._id)}
+                className="bg-red-600 text-white px-4 py-2 rounded-md mr-2"
+              >
+                Delete
+              </button>
+              <Link to={`/update/${user._id}`}>
+                <button className="bg-blue-700 text-white px-4 py-2 rounded-md">
+                  Edit
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>

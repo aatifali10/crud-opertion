@@ -1,36 +1,46 @@
-// UpdateUser.jsx
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const UpdateUser = () => {
-  const { userId } = useParams();
-  const [formData, setFormData] = useState({
-    name: "",
-    lastName: "",
-    email: "",
-    phone: ""
-  });
+  const { id } = useParams();
+  const [values, setValues] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/user/${userId}`)
-      .then((res) => setFormData(res.data))
-      .catch((error) => console.error("Error fetching user:", error));
-  }, [userId]);
+    if (id) {
+      // Fetch user data using userId
+      const fetchUser = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:5000/api/update/${id}`
+          );
+          setValues(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
+      fetchUser();
+    }
+  }, [values]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/update/${userId}`, formData);
-      console.log("User data updated successfully");
+      const response = await axios.put(
+        `http://localhost:5000/api/update/${id}`,
+        values
+      );
+      console.log("Response:", response.data.NewUser);
+      navigate("/");
     } catch (error) {
-      console.error("Error updating user data:", error);
-      
+      console.error("Error:", error);
     }
   };
 
@@ -39,28 +49,26 @@ const UpdateUser = () => {
       <input
         type="text"
         name="name"
-        value={formData.name}
+        value={values.name || ""}
         onChange={handleChange}
         placeholder="Enter your name"
       />
       <input
         type="text"
         name="lastName"
-        value={formData.lastName}
+        value={values.lastName || ""}
         onChange={handleChange}
         placeholder="Enter your last name"
       />
       <input
-        type="email"
         name="email"
-        value={formData.email}
+        value={values.email || ""}
         onChange={handleChange}
         placeholder="Enter your email"
       />
       <input
-        type="text"
         name="phone"
-        value={formData.phone}
+        value={values.phone || ""}
         onChange={handleChange}
         placeholder="Enter your phone"
       />
