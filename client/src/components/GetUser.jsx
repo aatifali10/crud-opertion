@@ -32,20 +32,18 @@ const GetUser = () => {
             </h1>
             <h6 className="text-gray-600">{items.email}</h6>
             <h6 className="text-gray-600">{items.phone}</h6>
-
-            <div className="flex justify-end mt-4">
-              <button
-                onClick={() => handleDelete(user._id)}
-                className="bg-red-600 text-white px-4 py-2 rounded-md mr-2"
-              >
-                Delete
+            <div></div>
+            <button
+              onClick={() => handleDelete(items._id)}
+              className="bg-red-600 text-white px-4 py-2 rounded-md mr-2"
+            >
+              Delete
+            </button>
+            <Link to={`/update/${items._id}`}>
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-md mr-2">
+                Edit
               </button>
-              <Link to={`/update/${user._id}`}>
-                <button className="bg-blue-700 text-white px-4 py-2 rounded-md">
-                  Edit
-                </button>
-              </Link>
-            </div>
+            </Link>
           </div>
         ))}
       </div>

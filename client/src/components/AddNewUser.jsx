@@ -24,39 +24,47 @@ const AddNewUser = () => {
 
   return (
     <form
-      onSubmit={handleSubmit}
-      className="flex flex-col w-[500px] bg-gray-600 mx-auto mt-[rem]"
+    onSubmit={handleSubmit}
+    className="flex flex-col w-[500px] bg-gray-600 mx-auto mt-[1rem] p-6 rounded-lg shadow-md"
+  >
+    <input
+      type="text"
+      name="name"
+      value={formData.name}
+      onChange={handleChange}
+      placeholder="Enter your name"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <input
+      type="text"
+      name="lastName"
+      value={formData.lastName}
+      onChange={handleChange}
+      placeholder="Enter your last name"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <input
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+      placeholder="Enter your email"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <input
+      name="phone"
+      value={formData.phone}
+      onChange={handleChange}
+      placeholder="Enter your phone"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <button
+      type="submit"
+      className="py-2 px-4 bg-blue-500 text-white text-lg font-semibold rounded-md hover:bg-blue-600 transition duration-300"
     >
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        placeholder="enter you'r name"
-      />
-      <input
-        type="text"
-        name="lastName"
-        value={formData.lastName}
-        onChange={handleChange}
-        placeholder="enter you'r name"
-      />
-      <input
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="Enter you'r email"
-      />
-      <input
-        name="phone"
-        value={formData.phone}
-        onChange={handleChange}
-        placeholder="enter you'r phone"
-      />
-      <button type="submit" className="text-white text-[30px]">
-        Create
-      </button>
-    </form>
+      Create
+    </button>
+  </form>
+  
   );
 };
 

@@ -45,35 +45,48 @@ const UpdateUser = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={values.name || ""}
-        onChange={handleChange}
-        placeholder="Enter your name"
-      />
-      <input
-        type="text"
-        name="lastName"
-        value={values.lastName || ""}
-        onChange={handleChange}
-        placeholder="Enter your last name"
-      />
-      <input
-        name="email"
-        value={values.email || ""}
-        onChange={handleChange}
-        placeholder="Enter your email"
-      />
-      <input
-        name="phone"
-        value={values.phone || ""}
-        onChange={handleChange}
-        placeholder="Enter your phone"
-      />
-      <button type="submit">Update</button>
-    </form>
+    <form
+    onSubmit={handleSubmit}
+    className="flex flex-col w-[500px] bg-gray-600 mx-auto mt-[1rem] p-6 rounded-lg shadow-md"
+  >
+    <input
+      type="text"
+      name="name"
+      value={values.name}
+      onChange={handleChange}
+      placeholder="Enter your name"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <input
+      type="text"
+      name="lastName"
+      value={values.lastName}
+      onChange={handleChange}
+      placeholder="Enter your last name"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <input
+      name="email"
+      value={values.email}
+      onChange={handleChange}
+      placeholder="Enter your email"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <input
+      name="phone"
+      value={values.phone}
+      onChange={handleChange}
+      placeholder="Enter your phone"
+      className="mb-4 py-2 px-4 rounded-md bg-gray-200 focus:outline-none focus:bg-white"
+    />
+    <button
+      type="submit"
+      className="py-2 px-4 bg-blue-500 text-white text-lg font-semibold rounded-md hover:bg-blue-600 transition duration-300"
+    >
+      Create
+    </button>
+  </form>
+  
   );
 };
 
